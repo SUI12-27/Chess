@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class pieceMove : MonoBehaviour, IPointerClickHandler
+{
+    public pieceMoveMark pieceMoveMark;
+    public int piecetype;
+    // Start is called before the first frame update
+    void Start()
+    {
+        pieceMoveMark = transform.parent.GetComponent<pieceMoveMark>();
+        piecetype = pieceMoveMark.initialpiecetype;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Board.board[(int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y * -1] = 0;
+        gameObject.transform.parent.transform.position = gameObject.transform.position;
+        pieceMoveMark.NowPosition = gameObject.transform.parent.transform.position;
+        Board.board[(int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y * -1] = piecetype;
+            for(int i=0; i<pieceMoveMark.NowviewedMark.Count;i++)
+            {
+                Destroy(pieceMoveMark.NowviewedMark[i]);
+            }
+            pieceMoveMark.NowviewedMark.Clear();
+            
+    }
+}
