@@ -1,25 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PieceMoveRiders : BasePieceMove<pieceMoveMarkRider>, IPointerClickHandler
+public abstract class BasePieceMoveMark<T> : MonoBehaviour
+where T : Component
 {
-    // public pieceMoveMarkRider pieceMoveMarkRider;
-    // public int piecetype;
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-    //     pieceMoveMarkRider = transform.parent.GetComponent<pieceMoveMarkRider>();
-    //     piecetype = pieceMoveMarkRider.initialpiecetype;
-    // }
-
-    // Update is called once per frame
-    void Update()
+    public T pieceMoveMark;
+    // public int ptiecetype;
+    protected virtual void Start()
     {
 
+        Getpiecemovemark();
     }
-    public void OnPointerClick(PointerEventData eventData)
+    protected void Getpiecemovemark()
+    {
+        pieceMoveMark = transform.parent.GetComponent<T>();
+        //piecetype = pieceMoveMark.initialpiecetype;
+    }
+    protected void OnClick()
     {
         Board.board[(int)pieceMoveMarkRider.NowPosition.x,(int)pieceMoveMarkRider.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
