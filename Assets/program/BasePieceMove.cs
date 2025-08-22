@@ -2,33 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public abstract class BasePieceMoveMark<T> : MonoBehaviour
-where T : Component
+public abstract class BaseMove<T> : MonoBehaviour, IPointerClickHandler
+where T : Component, IMoveable
+
 {
-    public T pieceMoveMark;
+    public T PieceMoveMarkType;
+
+    //UnityEditorÇÃInspectorÇ©ÇÁê›íËÇ∑ÇÈÇ±Ç∆
+    public int Initialpiecetype;
+    public int Piecetype;
     // public int ptiecetype;
     protected virtual void Start()
     {
-
-        Getpiecemovemark();
-    }
-    protected void Getpiecemovemark()
-    {
-        pieceMoveMark = transform.parent.GetComponent<T>();
+        PieceMoveMarkType = transform.parent.GetComponent<T>();
         //piecetype = pieceMoveMark.initialpiecetype;
     }
-    protected void OnClick()
+
+    protected virtual void ClickAction()
     {
-        Board.board[(int)pieceMoveMarkRider.NowPosition.x,(int)pieceMoveMarkRider.NowPosition.y * -1] = 0;
+        Board.board[(int)PieceMoveMarkType.NowPosition.x,(int)PieceMoveMarkType.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
-        pieceMoveMarkRider.NowPosition = gameObject.transform.parent.transform.position;
-        Board.board[(int)pieceMoveMarkRider.NowPosition.x,(int)pieceMoveMarkRider.NowPosition.y * -1] = piecetype;
-            for(int i=0; i<pieceMoveMark.NowviewedMark.Count;i++)
-            {
-                Destroy(pieceMoveMark.NowviewedMark[i]);
-            }
-            pieceMoveMark.NowviewedMark.Clear();
+        PieceMoveMarkType.NowPosition = gameObject.transform.parent.transform.position;
+        Board.board[(int)PieceMoveMarkType.NowPosition.x,(int)PieceMoveMarkType.NowPosition.y * -1] = Piecetype;
+
+        for(int i=0; i<pieceMoveMark.NowviewedMark.Count;i++)
+        {
+            Destroy(pieceMoveMark.NowviewedMark[i]);
+        }
+        pieceMoveMark.NowviewedMark.Clear();
             
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        ClickAction();
     }
 }
