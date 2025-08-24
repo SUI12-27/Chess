@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class pieceMoveMark : MonoBehaviour, IPointerClickHandler
+public class PieceMoveMark : MonoBehaviour, IPointerClickHandler
 {
 
     public Vector2[] canMove;
@@ -64,7 +64,7 @@ public class pieceMoveMark : MonoBehaviour, IPointerClickHandler
             return false;
         }
         GameObject MoveMark = Instantiate(CanMoveMark, gameObject.transform);//MoveMarkを作る。
-        pieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する
+        PieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する
         MoveMark.transform.SetParent(null);
         MoveMark.transform.localPosition = NewMarkPosition;//movemarkの場所をcanmoveのi番目にする。
         MoveMark.transform.SetParent(gameObject.transform);

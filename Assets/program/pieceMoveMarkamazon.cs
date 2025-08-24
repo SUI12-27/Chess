@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-public class pieceMoveMarkamazon : MonoBehaviour, IPointerClickHandler
+public class pieceMoveMarkamazon : MonoBehaviour, IPointerClickHandler, IMoveable
 {
 
     public Vector2[] canMove;
@@ -12,7 +12,7 @@ public class pieceMoveMarkamazon : MonoBehaviour, IPointerClickHandler
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
 
-    public Vector2 NowPosition;
+    public Vector2 NowPosition{ get;set;}
     public int initialpiecetype;
 
 
@@ -32,13 +32,13 @@ public class pieceMoveMarkamazon : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (pieceMoveMark.NowviewedMark.Count != 0)
+        if (PieceMoveMark.NowviewedMark.Count != 0)
         {
-            for (int i = 0; i < pieceMoveMark.NowviewedMark.Count; i++)
+            for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
             {
-                Destroy(pieceMoveMark.NowviewedMark[i]);
+                Destroy(PieceMoveMark.NowviewedMark[i]);
             }
-            pieceMoveMark.NowviewedMark.Clear();
+            PieceMoveMark.NowviewedMark.Clear();
         }
         Lastpiececlicked = gameObject;
 
@@ -78,7 +78,7 @@ public class pieceMoveMarkamazon : MonoBehaviour, IPointerClickHandler
             return false;
         }
         GameObject MoveMark = Instantiate(CanMoveMark, gameObject.transform);//MoveMarkを作る。
-        pieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する
+        PieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する
         MoveMark.transform.SetParent(null);
         MoveMark.transform.localPosition = NewMarkPosition;//movemarkの場所をcanmoveのi番目にする。
         MoveMark.transform.SetParent(gameObject.transform);

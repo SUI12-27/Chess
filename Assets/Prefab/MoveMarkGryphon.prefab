@@ -143,5 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04c779cae7175f4bb3944ca29d28cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceMoveMarkRider: {fileID: 0}
-  piecetype: 0
+  PieceMoveMarkType: {fileID: 0}
+  InitialPiecetype: 0
+  Piecetype: 10

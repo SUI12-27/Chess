@@ -10,8 +10,8 @@ where T : Component, IMoveable
 {
     public T PieceMoveMarkType;
 
-    //UnityEditor‚ÌInspector‚©‚çİ’è‚·‚é‚±‚Æ
-    public int Initialpiecetype;
+    //UnityEditorï¿½ï¿½Inspectorï¿½ï¿½ï¿½ï¿½è‚·ï¿½é‚±ï¿½ï¿½
+    public int InitialPiecetype;
     public int Piecetype;
     // public int ptiecetype;
     protected virtual void Start()
@@ -27,11 +27,11 @@ where T : Component, IMoveable
         PieceMoveMarkType.NowPosition = gameObject.transform.parent.transform.position;
         Board.board[(int)PieceMoveMarkType.NowPosition.x,(int)PieceMoveMarkType.NowPosition.y * -1] = Piecetype;
 
-        for(int i=0; i<pieceMoveMark.NowviewedMark.Count;i++)
+        for(int i=0; i<PieceMoveMark.NowviewedMark.Count;i++)
         {
-            Destroy(pieceMoveMark.NowviewedMark[i]);
+            Destroy(PieceMoveMark.NowviewedMark[i]);
         }
-        pieceMoveMark.NowviewedMark.Clear();
+        PieceMoveMark.NowviewedMark.Clear();
             
     }
 

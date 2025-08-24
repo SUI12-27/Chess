@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class pieceMove : MonoBehaviour, IPointerClickHandler
+public class PieceMove : MonoBehaviour, IPointerClickHandler
 {
-    public pieceMoveMark pieceMoveMark;
+    public PieceMoveMark pieceMoveMark;
     public int piecetype;
     // Start is called before the first frame update
     void Start()
     {
-        pieceMoveMark = transform.parent.GetComponent<pieceMoveMark>();
+        pieceMoveMark = transform.parent.GetComponent<PieceMoveMark>();
         piecetype = pieceMoveMark.initialpiecetype;
     }
 
@@ -25,11 +25,11 @@ public class pieceMove : MonoBehaviour, IPointerClickHandler
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         pieceMoveMark.NowPosition = gameObject.transform.parent.transform.position;
         Board.board[(int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y * -1] = piecetype;
-            for(int i=0; i<pieceMoveMark.NowviewedMark.Count;i++)
+            for(int i=0; i<PieceMoveMark.NowviewedMark.Count;i++)
             {
-                Destroy(pieceMoveMark.NowviewedMark[i]);
+                Destroy(PieceMoveMark.NowviewedMark[i]);
             }
-            pieceMoveMark.NowviewedMark.Clear();
+            PieceMoveMark.NowviewedMark.Clear();
             
     }
 }
