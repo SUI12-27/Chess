@@ -4,14 +4,14 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-public class pieceMoveMarkRider : MonoBehaviour, IPointerClickHandler
+public class pieceMoveMarkRider : MonoBehaviour, IPointerClickHandler, IMoveable
 {
 
     public Vector2[] canMove;
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
 
-    public Vector2 NowPosition;
+    public Vector2 NowPosition { get; set; }
     public int initialpiecetype;
 
 
