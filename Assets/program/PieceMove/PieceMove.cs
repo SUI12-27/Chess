@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class PieceMove : BaseMove<PieceMoveMark>
 {
-    public PieceMoveMark pieceMoveMark;
+    public BasePieceMoveMark pieceMoveMark;
     public int piecetype;
     // Start is called before the first frame update
-    protected override void Start() 
+    protected override void Start()
     {
         base.Start();
-        pieceMoveMark = transform.parent.GetComponent<PieceMoveMark>();
+        pieceMoveMark = transform.parent.GetComponent<BasePieceMoveMark>();
         piecetype = pieceMoveMark.initialpiecetype;
     }
 

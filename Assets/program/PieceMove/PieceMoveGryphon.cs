@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class PieceMoveGryphon : BaseMove<PieceMoveMarkGryphon>
 {
-    public PieceMoveMark PieceMoveMarkGryphon;
+    public BasePieceMoveMark PieceMoveMarkGryphon;
     public int piecetype;
     // Start is called before the first frame update
     protected override void Start() 
     {
         base.Start();
-        PieceMoveMarkGryphon = transform.parent.GetComponent<PieceMoveMark>();
+        PieceMoveMarkGryphon = transform.parent.GetComponent<BasePieceMoveMark>();
         piecetype = PieceMoveMarkGryphon.initialpiecetype;
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4671037786405863731}
   - component: {fileID: 1436684722944278387}
   - component: {fileID: 1384568727277559079}
+  - component: {fileID: 7392020580690454859}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -158,3 +159,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49, y: 0.49}
   m_EdgeRadius: 0
+--- !u!114 &7392020580690454859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018976700084989585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518154fd277f22f47802be8ed7ec1ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove:
+  - {x: 1, y: 2}
+  - {x: -1, y: 2}
+  - {x: 1, y: -2}
+  - {x: -1, y: -2}
+  - {x: 2, y: 1}
+  - {x: 2, y: -1}
+  - {x: -2, y: -1}
+  - {x: -2, y: 1}
+  CanMoveMark: {fileID: 2301592387323749998, guid: 59685d2227dbb734db8cf5a8708b849d, type: 3}
+  NowPosition: {x: 0, y: 0}
+  initialpiecetype: 4

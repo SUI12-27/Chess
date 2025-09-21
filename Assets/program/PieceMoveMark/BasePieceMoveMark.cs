@@ -6,7 +6,7 @@ public abstract class BasePieceMoveMark : MonoBehaviour
 {
     public int initialpiecetype;
     public Vector2 NowPosition{get;set;}
-    void Start()
+    protected virtual void Start()
     {
         int x = (int)transform.position.x;
         int y = (int)transform.position.y;
