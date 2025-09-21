@@ -31,5 +31,6 @@ public class PieceMove : BaseMove<PieceMoveMark>
             Destroy(PieceMoveMark.NowviewedMark[i]);
         }
         PieceMoveMark.NowviewedMark.Clear();
+        
     }
 }

@@ -7,8 +7,9 @@ public class Board : MonoBehaviour
     public const int BOARD_VERTICAL = 8;
     public const int BOARD_HORIZONTAL = 8;
     public ChildArray[] board = new ChildArray[BOARD_HORIZONTAL];
-    public static Board Boardinstans {get => boardinstans;}
+    public static Board Boardinstans { get => boardinstans; }
     static Board boardinstans;
+    public PieceAffiliation Turn = PieceAffiliation.White;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,8 +20,19 @@ public class Board : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    public void TurnChange()
+    {
+        if (Turn == PieceAffiliation.White)
+        {
+            Turn = PieceAffiliation.black;
+        }
+        else if (Turn == PieceAffiliation.black)
+        {
+            Turn = PieceAffiliation.White;
+        }
+    } 
 }
 [System.Serializable]
 public class ChildArray
