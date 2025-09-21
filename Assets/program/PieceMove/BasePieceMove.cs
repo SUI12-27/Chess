@@ -17,7 +17,6 @@ where T : Component, IMoveable
     {
         PieceMoveMarkType = transform.parent.GetComponent<T>();
         Piecetype = transform.parent.GetComponent<BasePieceMoveMark>().initialpiecetype;
-        Board.Boardinstans.board[0].Value[0] = Piecetype;
     }
 
     protected abstract void ClickAction();

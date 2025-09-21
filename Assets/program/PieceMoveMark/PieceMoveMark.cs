@@ -11,7 +11,7 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
     public static List<GameObject> NowviewedMark = new List<GameObject>();
-    public Vector2 NowPosition{get;set;}
+
 
 
 
@@ -19,9 +19,6 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
     void Start()
     {
 
-        int x = (int)transform.position.x;
-        int y = (int)transform.position.y;
-        NowPosition = new Vector2(x, y);
     }
 
     public void OnPointerClick(PointerEventData eventData)

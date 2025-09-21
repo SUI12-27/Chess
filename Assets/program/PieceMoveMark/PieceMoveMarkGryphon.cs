@@ -10,20 +10,12 @@ public class PieceMoveMarkGryphon : BasePieceMoveMark, IPointerClickHandler, IMo
     public Vector2[] canMove;
     public Vector2[] offset;
     public GameObject CanMoveMark;
-    public static GameObject Lastpiececlicked;
-
-    public Vector2 NowPosition {get;set;}
-
+    public static GameObject Lastpiececlicked;  
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        int x = (int)transform.position.x;
-        int y = (int)transform.position.y;
-        NowPosition = new Vector2(x, y);
-        Board.Boardinstans.board[x].Value[y * -1] = initialpiecetype;
     }
 
     // Update is called once per frame

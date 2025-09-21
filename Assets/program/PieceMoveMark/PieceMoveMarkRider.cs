@@ -11,17 +11,11 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
 
-    public Vector2 NowPosition { get; set; }
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        int x = (int)transform.position.x;
-        int y = (int)transform.position.y;
-        NowPosition = new Vector2(x, y);
-        Board.Boardinstans.board[x].Value[y * -1] = initialpiecetype;
     }
 
     // Update is called once per frame
