@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public static int[,] board = new int[8,8];
+    public const int BOARD_VERTICAL = 8;
+    public const int BOARD_HORIZONTAL = 8;
+    public ChildArray[] board = new ChildArray[BOARD_HORIZONTAL];
+    public static Board Boardinstans {get => boardinstans;}
+    static Board boardinstans;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        boardinstans = this;
     }
 
     // Update is called once per frame
@@ -17,4 +21,9 @@ public class Board : MonoBehaviour
     {
         
     }
+}
+[System.Serializable]
+public class ChildArray
+{
+    public int[] Value = new int [Board.BOARD_VERTICAL];
 }

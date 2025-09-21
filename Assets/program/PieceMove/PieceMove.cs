@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PieceMove : MonoBehaviour, IPointerClickHandler
+public class PieceMove : BaseMove<PieceMoveMark>
 {
     public PieceMoveMark pieceMoveMark;
     public int piecetype;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start() 
     {
+        base.Start();
         pieceMoveMark = transform.parent.GetComponent<PieceMoveMark>();
         piecetype = pieceMoveMark.initialpiecetype;
     }
@@ -19,17 +20,16 @@ public class PieceMove : MonoBehaviour, IPointerClickHandler
     {
 
     }
-    public void OnPointerClick(PointerEventData eventData)
+    protected override void ClickAction()
     {
-        Board.board[(int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y * -1] = 0;
+        Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         pieceMoveMark.NowPosition = gameObject.transform.parent.transform.position;
-        Board.board[(int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y * -1] = piecetype;
-            for(int i=0; i<PieceMoveMark.NowviewedMark.Count;i++)
-            {
-                Destroy(PieceMoveMark.NowviewedMark[i]);
-            }
-            PieceMoveMark.NowviewedMark.Clear();
-            
+        Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1] = piecetype;
+        for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
+        {
+            Destroy(PieceMoveMark.NowviewedMark[i]);
+        }
+        PieceMoveMark.NowviewedMark.Clear();
     }
 }

@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IMoveable
 {
     Vector2 NowPosition { get; set; }
-
+    
 }
