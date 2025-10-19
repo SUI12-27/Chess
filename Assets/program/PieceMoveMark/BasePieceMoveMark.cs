@@ -14,5 +14,21 @@ public abstract class BasePieceMoveMark : MonoBehaviour
         NowPosition = new Vector2(x, y);
         Board.Boardinstans.board[x].Value[y * -1] = initialpiecetype;
     }
+    protected bool CanMovePieceType(int piecetype)
+    {
+        if (affiliation == PieceAffiliation.White)
+        {
+            return piecetype > 0;
+        }
+        else if (affiliation == PieceAffiliation.black)
+        {
+            return piecetype < 0;
+        }
+        else
+        {
+            throw new System.Exception("未定義の値です");
+        }
+    }
 }
+
 public enum PieceAffiliation{White,black}

@@ -65,7 +65,7 @@ public class PieceMoveMarkGryphon : BasePieceMoveMark, IPointerClickHandler, IMo
             Debug.Log("break");
             return false;
         }
-        if (Board.Boardinstans.board[(int)NewMarkPosition.x].Value[ (int)NewMarkPosition.y * -1] > 0)//newmarkpostionの場所に味方の駒がいるなら。
+        if (base.CanMovePieceType(Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1]))//newmarkpostionの場所に味方の駒がいるなら。
         {
             return false;
         }

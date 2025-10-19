@@ -39,4 +39,8 @@ where T : Component, IMoveable
         ClickAction();
         Board.Boardinstans.TurnChange();
     }
+    public void take()
+    {
+
+    }
 }

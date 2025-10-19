@@ -63,10 +63,9 @@ public class pieceMoveMarkamazon : BasePieceMoveMark, IPointerClickHandler, IMov
         //↓もしNewMarkPositionが盤面外なら最初からやりなおす。
         if ((int)NewMarkPosition.x < 0 || (int)NewMarkPosition.x >= Board.Boardinstans.board.GetLength(0) || (int)NewMarkPosition.y * -1 < 0 || (int)NewMarkPosition.y * -1 >= Board.Boardinstans.board.GetLength(1))
         {
-
             return false;
         }
-        if (Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1] > 0)//newmarkpostionの場所に味方の駒がいるなら。
+        if (base.CanMovePieceType(Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1]))//newmarkpostionの場所に味方の駒がいるなら。
         {
             return false;
         }
