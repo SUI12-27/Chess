@@ -25,6 +25,15 @@ public class PieceMoveGryphon : BaseMove<PieceMoveMarkGryphon>
         Board.Boardinstans.board[(int)PieceMoveMarkGryphon.NowPosition.x].Value[(int)PieceMoveMarkGryphon.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         PieceMoveMarkGryphon.NowPosition = gameObject.transform.parent.transform.position;
+        var oldpiecetype = Board.Boardinstans.board[(int)PieceMoveMarkGryphon.NowPosition.x].Value[(int)PieceMoveMarkGryphon.NowPosition.y * -1];
+        if(oldpiecetype < 0 && PieceMoveMarkGryphon.affiliation == PieceAffiliation.White)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)PieceMoveMarkGryphon.NowPosition.x,(int)PieceMoveMarkGryphon.NowPosition.y);
+        }
+        if(oldpiecetype > 0 && PieceMoveMarkGryphon.affiliation == PieceAffiliation.black)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)PieceMoveMarkGryphon.NowPosition.x,(int)PieceMoveMarkGryphon.NowPosition.y);
+        }
         Board.Boardinstans.board[(int)PieceMoveMarkGryphon.NowPosition.x].Value[(int)PieceMoveMarkGryphon.NowPosition.y * -1] = piecetype;
         for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
         {

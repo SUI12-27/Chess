@@ -22,7 +22,15 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {
+    {        
+        if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
+        {
+            return;
+        }
+        if(affiliation == PieceAffiliation.black && Board.Turn == PieceAffiliation.White)
+        {
+            return;
+        }
         if (NowviewedMark.Count != 0)
         {
             for (int i = 0; i < NowviewedMark.Count; i++)

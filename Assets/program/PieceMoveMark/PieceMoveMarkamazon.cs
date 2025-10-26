@@ -25,6 +25,14 @@ public class pieceMoveMarkamazon : BasePieceMoveMark, IPointerClickHandler, IMov
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
+        {
+            return;
+        }
+        if(affiliation == PieceAffiliation.black && Board.Turn == PieceAffiliation.White)
+        {
+            return;
+        }
         if (PieceMoveMark.NowviewedMark.Count != 0)
         {
             for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)

@@ -25,6 +25,15 @@ public class PieceMoveamazon : BaseMove<pieceMoveMarkamazon>
         Board.Boardinstans.board[(int)PieceMoveMarkamazon.NowPosition.x].Value[(int)PieceMoveMarkamazon.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         PieceMoveMarkamazon.NowPosition = gameObject.transform.parent.transform.position;
+        var oldpiecetype = Board.Boardinstans.board[(int)PieceMoveMarkamazon.NowPosition.x].Value[(int)PieceMoveMarkamazon.NowPosition.y * -1];
+        if(oldpiecetype < 0 && PieceMoveMarkamazon.affiliation == PieceAffiliation.White)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)PieceMoveMarkamazon.NowPosition.x,(int)PieceMoveMarkamazon.NowPosition.y);
+        }
+        if(oldpiecetype > 0 && PieceMoveMarkamazon.affiliation == PieceAffiliation.black)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)PieceMoveMarkamazon.NowPosition.x,(int)PieceMoveMarkamazon.NowPosition.y);
+        }
         Board.Boardinstans.board[(int)PieceMoveMarkamazon.NowPosition.x].Value[(int)PieceMoveMarkamazon.NowPosition.y * -1] = piecetype;
         for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
         {

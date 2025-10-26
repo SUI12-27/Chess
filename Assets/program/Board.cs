@@ -10,7 +10,7 @@ public class Board : MonoBehaviour
     public ChildArray[] board = new ChildArray[BOARD_HORIZONTAL];
     public static Board Boardinstans { get => boardinstans; }
     static Board boardinstans;
-    public PieceAffiliation Turn = PieceAffiliation.White;
+    public static PieceAffiliation Turn = PieceAffiliation.White;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,7 +23,11 @@ public class Board : MonoBehaviour
         {
             if((int)item.gameObject.transform.position.x == x && (int)item.gameObject.transform.position.y == y)
             {
-                Destroy(item.gameObject);
+                Debug.Log(item.gameObject.name);
+                if(item.affiliation != Turn)
+                {
+                    Destroy(item.gameObject);   
+                }
             }
         }
     }

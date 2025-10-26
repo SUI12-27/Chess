@@ -25,6 +25,15 @@ public class PieceMovePawn : BaseMove<PieceMoveMarkPawn>
         Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         pieceMoveMark.NowPosition = gameObject.transform.parent.transform.position;
+        var oldpiecetype = Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1];
+        if(oldpiecetype < 0 && pieceMoveMark.affiliation == PieceAffiliation.White)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y);
+        }
+        if(oldpiecetype > 0 && pieceMoveMark.affiliation == PieceAffiliation.black)
+        {
+            Board.Boardinstans.RemovePieceFromBoard((int)pieceMoveMark.NowPosition.x,(int)pieceMoveMark.NowPosition.y);
+        }
         Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1] = piecetype;
         for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
         {
