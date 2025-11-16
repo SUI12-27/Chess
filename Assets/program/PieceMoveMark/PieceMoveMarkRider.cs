@@ -13,6 +13,7 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
 
 
 
+
     // Start is called before the first frame update
     protected override void Start()
     {

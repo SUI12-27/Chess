@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class Board : MonoBehaviour
     public static Board Boardinstans { get => boardinstans; }
     static Board boardinstans;
     public static PieceAffiliation Turn = PieceAffiliation.White;
+    public GameObject WhiteTurnDisplay;
+    public GameObject BlackTurnDisplay;
+    public Animator animator;
+    public Toggle toggle;
     // Start is called before the first frame update
     void Awake()
     {
         boardinstans = this;
+        BlackTurnDisplay.SetActive(false);
+        WhiteTurnDisplay.SetActive(true);
     }
     public void RemovePieceFromBoard(int x, int y)
     {
@@ -38,13 +45,26 @@ public class Board : MonoBehaviour
     }
     public void TurnChange()
     {
+        
         if (Turn == PieceAffiliation.White)
         {
+            if(toggle.isOn)
+            {
+                animator.Play("Show(BLACK)");
+            }
             Turn = PieceAffiliation.black;
+            WhiteTurnDisplay.SetActive(false);
+            BlackTurnDisplay.SetActive(true);
         }
         else if (Turn == PieceAffiliation.black)
         {
-            Turn = PieceAffiliation.White;
+            if(toggle.isOn)
+            {
+                animator.Play("Show");
+            }
+                Turn = PieceAffiliation.White;
+            BlackTurnDisplay.SetActive(false);
+            WhiteTurnDisplay.SetActive(true);
         }
     } 
 }
