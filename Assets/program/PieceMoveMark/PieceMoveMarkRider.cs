@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMoveable
 {
-
-    public Vector2[] canMove;
     public GameObject CanMoveMark;
+    public GameObject BreakthorowMoveMark;
     public static GameObject Lastpiececlicked;
 
 
@@ -26,52 +26,82 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
-        {
-            return;
-        }
-        if(affiliation == PieceAffiliation.black && Board.Turn == PieceAffiliation.White)
-        {
-            return;
-        }
-        if (PieceMoveMark.NowviewedMark.Count != 0)
-        {
-            for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
+            if (PieceMoveMark.NowviewedMark.Count != 0)
             {
-                Destroy(PieceMoveMark.NowviewedMark[i]);
-            }
-            PieceMoveMark.NowviewedMark.Clear();
-        }
-        Lastpiececlicked = gameObject;
-
-        for (int i = 0; i < canMove.Length; i++)//動ける場所の数よりiが多くなるまで繰り返し。
-        {
-            Vector2 NewMarkPosition = NowPosition;//NewMarkPositionは今の場所
-            while (true)
-            {
-                NewMarkPosition += canMove[i];//NewMaekPostionにcanMoveのi番目を足す
-                if (TryPlaceMark(NewMarkPosition) == false)
+                for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
                 {
-                    break;
+                    Destroy(PieceMoveMark.NowviewedMark[i]);
                 }
+                PieceMoveMark.NowviewedMark.Clear();
+            
+                for (int i = 0; i < PieceMoveMark.NowviewedBreakthorowMark.Count; i++)
+                {
+                    Destroy(PieceMoveMark.NowviewedBreakthorowMark[i]);
+                }
+                PieceMoveMark.NowviewedBreakthorowMark.Clear();
             }
-        }
+        CreatePieceMove(false);
+        CreatePieceMove(true);
+        Board.Boardinstans.CheckBoardthoroughly(CanMoveMark.GetComponent<BasePieceMove>(),transform);
+        Board.Boardinstans.AllClearBreakthroughMove();
 
     }
-    bool TryPlaceMark(Vector2 NewMarkPosition)
+    void CreatePieceMove(bool breakthrow)
+    {
+        if(affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
+            {
+                return;
+            }
+            if(affiliation == PieceAffiliation.black && Board.Turn == PieceAffiliation.White)
+            {
+                return;
+            }
+            Lastpiececlicked = gameObject;
+
+            for (int i = 0; i < canMove.Length; i++)//動ける場所の数よりiが多くなるまで繰り返し。
+            {
+                Vector2 NewMarkPosition = NowPosition;//NewMarkPositionは今の場所
+                while (true)
+                {
+                    NewMarkPosition += canMove[i];//NewMaekPostionにcanMoveのi番目を足す
+                    if(!breakthrow)
+                    {
+                        if(TryPlaceMark(NewMarkPosition,CanMoveMark,false) == false)
+                        {
+                            break;
+                        }   
+                    }
+                    else
+                    {
+                        if(TryPlaceMark(NewMarkPosition,BreakthorowMoveMark,true) == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+    }
+    bool TryPlaceMark(Vector2 NewMarkPosition,GameObject CanMove,bool BreakthorowMoveMark)
     {
         //↓もしNewMarkPositionが盤面外なら最初からやりなおす。
         if ((int)NewMarkPosition.x < 0 || (int)NewMarkPosition.x >= Board.BOARD_HORIZONTAL || (int)NewMarkPosition.y * -1 < 0 || (int)NewMarkPosition.y * -1 >= Board.BOARD_VERTICAL)
         {
-
             return false;
         }
-        if (base.CanMovePieceType(Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1]))//newmarkpostionの場所に味方の駒がいるなら。
+        //         ↓ != 0  (駒がいる)
+        if (!BreakthorowMoveMark && base.CanMovePieceType(Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1]))//newmarkpostionの場所に駒がいるなら。
         {
             return false;
         }
-        GameObject MoveMark = Instantiate(CanMoveMark, gameObject.transform);//MoveMarkを作る。
-        PieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する
+        GameObject MoveMark = Instantiate(CanMove, gameObject.transform);//MoveMarkを作る。
+        if(BreakthorowMoveMark)
+        {
+            PieceMoveMark.NowviewedBreakthorowMark.Add(MoveMark);//今見えているBreakThrowmarkをmovemarkに追加する    
+        }
+        else
+        {
+            PieceMoveMark.NowviewedMark.Add(MoveMark);//今見えているmarkをmovemarkに追加する    
+        }
         MoveMark.transform.SetParent(null);
         MoveMark.transform.localPosition = NewMarkPosition;//movemarkの場所をcanmoveのi番目にする。
         MoveMark.transform.SetParent(gameObject.transform);

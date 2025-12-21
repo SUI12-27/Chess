@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 public class PieceMoveMarkGryphon : BasePieceMoveMark, IPointerClickHandler, IMoveable
 {
-
-    public Vector2[] canMove;
     public Vector2[] offset;
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;  

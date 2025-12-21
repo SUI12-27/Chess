@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BasePieceMoveMark : MonoBehaviour
 {
+    public Vector2[] canMove;
+    public Vector2[] canMoveRider;
     public PieceAffiliation affiliation;
     public int initialpiecetype;
     public Vector2 NowPosition { get; set; }
@@ -16,18 +18,23 @@ public abstract class BasePieceMoveMark : MonoBehaviour
     }
     protected bool CanMovePieceType(int piecetype)
     {
-        if (affiliation == PieceAffiliation.White)
-        {
-            return piecetype > 0;
-        }
-        else if (affiliation == PieceAffiliation.black)
-        {
-            return piecetype < 0;
-        }
-        else
-        {
-            throw new System.Exception("未定義の値です");
-        }
+        //     if (affiliation == PieceAffiliation.White)
+        //     {
+        //         return piecetype == 0;
+        //     }
+        //     else if (affiliation == PieceAffiliation.black)
+        //     {
+        //         return piecetype < 0;
+        //     }
+        //     else
+        //     {
+        //         throw new System.Exception("未定義の値です");
+        //     }
+        return piecetype != 0;
+    }
+    public void CreateBrakethroughMove()
+    {        
+        // 次回(12/7)作る!!!!!!!!!!!!!!
     }
 }
 

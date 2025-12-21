@@ -40,5 +40,6 @@ public class PieceMoveRiders : BaseMove<PieceMoveMarkRider>
             Destroy(PieceMoveMark.NowviewedMark[i]);
         }
         PieceMoveMark.NowviewedMark.Clear();
+        Board.Boardinstans.AllClearCanMoveMark();
     }
 }

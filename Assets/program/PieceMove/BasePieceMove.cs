@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using JetBrains.Annotations;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public abstract class BaseMove<T> : MonoBehaviour, IPointerClickHandler
+public abstract class BasePieceMove : MonoBehaviour
+{
+    public bool ExistEnemyFlag;
+}
+public abstract class BaseMove<T> : BasePieceMove , IPointerClickHandler
 where T : Component, IMoveable
 
 {
@@ -13,10 +17,33 @@ where T : Component, IMoveable
     //UnityEditor��Inspector����肷�邱��
     public int Piecetype;
     // public int ptiecetype;
+
+
     protected virtual void Start()
     {
         PieceMoveMarkType = transform.parent.GetComponent<T>();
         Piecetype = transform.parent.GetComponent<BasePieceMoveMark>().initialpiecetype;
+    }
+
+    public List<Vector2> AroundList
+    {
+        get
+        {
+            var list = new List<Vector2>();
+            int myX = (int)transform.position.x;
+            int myY = (int)transform.position.y;
+
+            list.Add(new Vector2(myX-1,myY+1)); //左上
+            list.Add(new Vector2(myX,myY+1));   //上
+            list.Add(new Vector2(myX+1,myY+1)); //右上
+            list.Add(new Vector2(myX+1,myY));   //右
+            list.Add(new Vector2(myX+1,myY-1)); //右下
+            list.Add(new Vector2(myX,myY-1));   //下
+            list.Add(new Vector2(myX-1,myY-1)); //左下
+            list.Add(new Vector2(myX-1,myY));   //左
+
+            return list;
+        }
     }
 
     protected abstract void ClickAction();

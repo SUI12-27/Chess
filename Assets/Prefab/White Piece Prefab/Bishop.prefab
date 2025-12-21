@@ -176,6 +176,8 @@ MonoBehaviour:
   - {x: 1, y: -1}
   - {x: -1, y: -1}
   - {x: -1, y: 1}
-  CanMoveMark: {fileID: 2301592387323749998, guid: fa0338540a85fcb4d90ab56978bdbfc7, type: 3}
-  NowPosition: {x: 0, y: 0}
+  canMoveRider: []
+  affiliation: 0
   initialpiecetype: 6
+  CanMoveMark: {fileID: 2301592387323749998, guid: fa0338540a85fcb4d90ab56978bdbfc7, type: 3}
+  BreakthorowMoveMark: {fileID: 2301592387323749998, guid: 285f9f74879f7e845b5c8494b9b216d0, type: 3}

@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class PieceMoveMarkPawn : BasePieceMoveMark, IPointerClickHandler, IMoveable
 {
-
-    public Vector2[] canMove;
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
     //public static List<GameObject> NowviewedMark = new List<GameObject>();

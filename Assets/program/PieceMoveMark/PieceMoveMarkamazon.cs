@@ -6,9 +6,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 public class pieceMoveMarkamazon : BasePieceMoveMark, IPointerClickHandler, IMoveable
 {
-
-    public Vector2[] canMove;
-    public Vector2[] canMoveRider;
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
 

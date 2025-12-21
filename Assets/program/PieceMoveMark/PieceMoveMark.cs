@@ -7,11 +7,11 @@ using UnityEngine.UIElements;
 public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
 {
 
-    public Vector2[] canMove;
+    
     public GameObject CanMoveMark;
     public static GameObject Lastpiececlicked;
     public static List<GameObject> NowviewedMark = new List<GameObject>();
-
+    public static List<GameObject> NowviewedBreakthorowMark = new List<GameObject>();
 
 
 
@@ -23,6 +23,10 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
 
     public void OnPointerClick(PointerEventData eventData)
     {        
+        CreatePieceMove(false);
+    }
+    void CreatePieceMove(bool breakthrow)
+    {
         if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
         {
             return;
@@ -39,15 +43,26 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
             }
             NowviewedMark.Clear();
         }
+        if (NowviewedMark.Count != 0)
+        {
+            for (int i = 0; i < NowviewedBreakthorowMark.Count; i++)
+            {
+                Destroy(NowviewedBreakthorowMark[i]);
+            }
+            NowviewedBreakthorowMark.Clear();
+        }
         Lastpiececlicked = gameObject;
 
         for (int i = 0; i < canMove.Length; i++)//動ける場所の数よりiが多くなるまで繰り返し。
         {
 
             Vector2 NewMarkPosition = NowPosition + canMove[i];
-            if (TryPlaceMark(NewMarkPosition) == false)
+            if(!breakthrow)
             {
-                continue;
+                if (TryPlaceMark(NewMarkPosition) == false)
+                {
+                    continue;
+                }   
             }
         }
     }

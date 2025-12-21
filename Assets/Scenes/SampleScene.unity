@@ -4638,7 +4638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4746062063606608059, guid: b2a041c1198b94c45b74cfd9e5450e01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4746062063606608059, guid: b2a041c1198b94c45b74cfd9e5450e01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5326,6 +5326,8 @@ MonoBehaviour:
   BlackTurnDisplay: {fileID: 1357286846}
   animator: {fileID: 1205964333}
   toggle: {fileID: 701529280}
+  ImpenetravleMoveList: []
+  VastMoveList: []
 --- !u!212 &1690981158
 SpriteRenderer:
   m_ObjectHideFlags: 0

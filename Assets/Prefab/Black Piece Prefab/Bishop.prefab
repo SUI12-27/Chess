@@ -171,11 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7037761c2cf2b024db772bf751590cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affiliation: 1
-  initialpiecetype: -6
   canMove:
   - {x: 1, y: 1}
   - {x: 1, y: -1}
   - {x: -1, y: -1}
   - {x: -1, y: 1}
+  canMoveRider: []
+  affiliation: 1
+  initialpiecetype: -6
   CanMoveMark: {fileID: 2301592387323749998, guid: fa0338540a85fcb4d90ab56978bdbfc7, type: 3}
+  BreakthorowMoveMark: {fileID: 2301592387323749998, guid: 285f9f74879f7e845b5c8494b9b216d0, type: 3}
