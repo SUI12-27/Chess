@@ -184,4 +184,4 @@ MonoBehaviour:
   affiliation: 0
   initialpiecetype: 5
   CanMoveMark: {fileID: 2301592387323749998, guid: fa0338540a85fcb4d90ab56978bdbfc7, type: 3}
-  BreakthorowMoveMark: {fileID: 2301592387323749998, guid: 285f9f74879f7e845b5c8494b9b216d0, type: 3}
+  BreakthorowMoveMark: {fileID: 2301592387323749998, guid: aaea9313af810fa44bfa37e5bfdee42e, type: 3}

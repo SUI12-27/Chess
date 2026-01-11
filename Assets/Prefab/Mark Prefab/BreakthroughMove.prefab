@@ -143,3 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fa0f4856944c048b9d590ff64c0432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aroundlist:
+  - {x: 1, y: 1}
+  - {x: 1, y: -1}
+  - {x: 1, y: 0}
+  - {x: -1, y: 1}
+  - {x: -1, y: -1}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}

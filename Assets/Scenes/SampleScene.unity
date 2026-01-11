@@ -5325,7 +5325,7 @@ MonoBehaviour:
   WhiteTurnDisplay: {fileID: 1973856337}
   BlackTurnDisplay: {fileID: 1357286846}
   animator: {fileID: 1205964333}
-  toggle: {fileID: 701529280}
+  TurnLogoToggle: {fileID: 701529280}
   ImpenetravleMoveList: []
   VastMoveList: []
 --- !u!212 &1690981158

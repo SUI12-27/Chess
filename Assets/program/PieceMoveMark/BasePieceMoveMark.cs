@@ -32,9 +32,9 @@ public abstract class BasePieceMoveMark : MonoBehaviour
         //     }
         return piecetype != 0;
     }
-    public void CreateBrakethroughMove()
-    {        
-        // 次回(12/7)作る!!!!!!!!!!!!!!
+    protected void RegistPieceMoveMark()
+    {
+        Board.Boardinstans.basePieceMoveMark = this;
     }
 }
 

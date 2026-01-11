@@ -21,6 +21,7 @@ public class PieceMoveMarkPawn : BasePieceMoveMark, IPointerClickHandler, IMovea
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        base.RegistPieceMoveMark();
         if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
         {
             return;

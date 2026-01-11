@@ -27,6 +27,7 @@ public class PieceMoveMark : BasePieceMoveMark, IPointerClickHandler, IMoveable
     }
     void CreatePieceMove(bool breakthrow)
     {
+        base.RegistPieceMoveMark();
         if (affiliation == PieceAffiliation.White && Board.Turn == PieceAffiliation.black)
         {
             return;

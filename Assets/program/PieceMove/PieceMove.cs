@@ -22,7 +22,6 @@ public class PieceMove : BaseMove<PieceMoveMark>
     }
     protected override void ClickAction()
     {
-        
         Board.Boardinstans.board[(int)pieceMoveMark.NowPosition.x].Value[(int)pieceMoveMark.NowPosition.y * -1] = 0;
         gameObject.transform.parent.transform.position = gameObject.transform.position;
         pieceMoveMark.NowPosition = gameObject.transform.parent.transform.position;

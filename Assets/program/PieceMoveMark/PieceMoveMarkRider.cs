@@ -26,6 +26,7 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        base.RegistPieceMoveMark();
             if (PieceMoveMark.NowviewedMark.Count != 0)
             {
                 for (int i = 0; i < PieceMoveMark.NowviewedMark.Count; i++)
@@ -44,7 +45,6 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
         CreatePieceMove(true);
         Board.Boardinstans.CheckBoardthoroughly(CanMoveMark.GetComponent<BasePieceMove>(),transform);
         Board.Boardinstans.AllClearBreakthroughMove();
-
     }
     void CreatePieceMove(bool breakthrow)
     {

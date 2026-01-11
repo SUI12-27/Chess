@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,12 +16,20 @@ public class Board : MonoBehaviour
 
     public static PieceAffiliation Turn = PieceAffiliation.White;
 
+
+    public BasePieceMoveMark basePieceMoveMark; 
+
+    public void setBasePieceMove(BasePieceMoveMark basePieceMoveMark)
+    {
+        this.basePieceMoveMark = basePieceMoveMark;
+
+    }
     public GameObject WhiteTurnDisplay;
     public GameObject BlackTurnDisplay;
 
     public Animator animator;
 
-    public Toggle toggle;
+    public Toggle TurnLogoToggle;
     
     public List<BasePieceMove> ImpenetravleMoveList;
     public List<BasePieceMove> VastMoveList;
@@ -114,6 +123,7 @@ public class Board : MonoBehaviour
             {
                 //指定マスのBreakthroughMoveの取得。以下「  targetBreakthroughMove   」
                 BreakthroughMove targetBreakthroughMove = GetBreakthroughMove(x,y * -1);
+                
                 //指定マスにBreakthroughMoveがない場合
                 if(targetBreakthroughMove == null)
                 {
@@ -148,7 +158,7 @@ public class Board : MonoBehaviour
         
         if (Turn == PieceAffiliation.White)
         {
-            if(toggle.isOn)
+            if(TurnLogoToggle.isOn)
             {
                 animator.Play("Show(BLACK)");
             }
@@ -158,7 +168,7 @@ public class Board : MonoBehaviour
         }
         else if (Turn == PieceAffiliation.black)
         {
-            if(toggle.isOn)
+            if(TurnLogoToggle.isOn)
             {
                 animator.Play("Show");
             }
