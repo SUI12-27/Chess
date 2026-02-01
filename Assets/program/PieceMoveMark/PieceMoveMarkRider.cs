@@ -25,7 +25,13 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
     {
     }
     public void OnPointerClick(PointerEventData eventData)
-    {
+    {        
+        Board.Boardinstans.AllClearCanMoveMark();
+        GameObject NoColliderCanMove = Instantiate(CanMoveMark,this.transform);
+        NoColliderCanMove.transform.position = this.transform.position;
+        Collider2D col = NoColliderCanMove.GetComponent<Collider2D>();
+        col.enabled = false;
+        NoColliderCanMove.gameObject.name="NoColliderCanMove";
         base.RegistPieceMoveMark();
             if (PieceMoveMark.NowviewedMark.Count != 0)
             {
@@ -58,7 +64,7 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
             }
             Lastpiececlicked = gameObject;
 
-            for (int i = 0; i < canMove.Length; i++)//動ける場所の数よりiが多くなるまで繰り返し。
+            for (int i = 0; i < canMove.Length; i++)//動ける場所の数繰り返し。
             {
                 Vector2 NewMarkPosition = NowPosition;//NewMarkPositionは今の場所
                 while (true)
@@ -83,17 +89,17 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
     }
     bool TryPlaceMark(Vector2 NewMarkPosition,GameObject CanMove,bool BreakthorowMoveMark)
     {
-        //↓もしNewMarkPositionが盤面外なら最初からやりなおす。
+        // ↓もしNewMarkPositionが盤面外なら最初からやりなおす。
         if ((int)NewMarkPosition.x < 0 || (int)NewMarkPosition.x >= Board.BOARD_HORIZONTAL || (int)NewMarkPosition.y * -1 < 0 || (int)NewMarkPosition.y * -1 >= Board.BOARD_VERTICAL)
         {
             return false;
         }
-        //         ↓ != 0  (駒がいる)
+                // ↓ != 0  (駒がいる)
         if (!BreakthorowMoveMark && base.CanMovePieceType(Board.Boardinstans.board[(int)NewMarkPosition.x].Value[(int)NewMarkPosition.y * -1]))//newmarkpostionの場所に駒がいるなら。
         {
             return false;
         }
-        GameObject MoveMark = Instantiate(CanMove, gameObject.transform);//MoveMarkを作る。
+        GameObject MoveMark = Instantiate(CanMove,gameObject.transform);//MoveMarkを作る。
         if(BreakthorowMoveMark)
         {
             PieceMoveMark.NowviewedBreakthorowMark.Add(MoveMark);//今見えているBreakThrowmarkをmovemarkに追加する    
@@ -108,4 +114,3 @@ public class PieceMoveMarkRider : BasePieceMoveMark, IPointerClickHandler, IMove
         return true;
     }
 }
-

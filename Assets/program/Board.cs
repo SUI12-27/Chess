@@ -79,18 +79,20 @@ public class Board : MonoBehaviour
     }
     public void AllClearBreakthroughMove()
     {
+
         var allPiece = FindObjectsByType<BreakthroughMove>(FindObjectsInactive.Include,FindObjectsSortMode.InstanceID);
         foreach (var item in allPiece)
         {
             Destroy(item.gameObject);
         }
     }
+    [ContextMenu("ClearTest")]
     public void AllClearCanMoveMark()
     {
         var allPiece = FindObjectsByType<BasePieceMove>(FindObjectsInactive.Include,FindObjectsSortMode.InstanceID);
         foreach (var item in allPiece)
         {
-            Destroy(item.gameObject);
+            DestroyImmediate(item.gameObject);
         }
     }
     public void RemovePieceFromBoard(int x, int y)

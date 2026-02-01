@@ -4634,11 +4634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4746062063606608059, guid: b2a041c1198b94c45b74cfd9e5450e01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4746062063606608059, guid: b2a041c1198b94c45b74cfd9e5450e01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4746062063606608059, guid: b2a041c1198b94c45b74cfd9e5450e01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5322,6 +5322,7 @@ MonoBehaviour:
   - Value: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   - Value: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   - Value: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  basePieceMoveMark: {fileID: 0}
   WhiteTurnDisplay: {fileID: 1973856337}
   BlackTurnDisplay: {fileID: 1357286846}
   animator: {fileID: 1205964333}
@@ -5585,7 +5586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5993914455498741165, guid: b20298683d554de4091433a219f2261c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5993914455498741165, guid: b20298683d554de4091433a219f2261c, type: 3}
       propertyPath: m_LocalPosition.z
