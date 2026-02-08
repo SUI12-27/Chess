@@ -14,12 +14,6 @@ public class PieceMoveRiders : BaseMove<PieceMoveMarkRider>
         pieceMoveMarkRider = transform.parent.GetComponent<BasePieceMoveMark>();
         piecetype = pieceMoveMarkRider.initialpiecetype;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     protected override void ClickAction()
     {
         Board.Boardinstans.board[(int)pieceMoveMarkRider.NowPosition.x].Value[(int)pieceMoveMarkRider.NowPosition.y * -1] = 0;

@@ -11,20 +11,12 @@ public class BreakthroughMove : MonoBehaviour
     {
             var list = new List<Vector2>();
             int myX = (int)transform.position.x;
-            int myY = (int)transform.position.y;
+            int myY = (int)transform.position.y * -1;
             foreach(var around in basePieceMoveMark.canMove)
             {
                 Vector2 Newaround = around + new Vector2(myX,myY);
                 list.Add(Newaround);
             }
-            // list.Add(new Vector2(myX-1,myY+1)); //左上
-            // list.Add(new Vector2(myX,myY+1));   //上
-            // list.Add(new Vector2(myX+1,myY+1)); //右上
-            // list.Add(new Vector2(myX+1,myY));   //右
-            // list.Add(new Vector2(myX+1,myY-1)); //右下
-            // list.Add(new Vector2(myX,myY-1));   //下
-            // list.Add(new Vector2(myX-1,myY-1)); //左下
-            // list.Add(new Vector2(myX-1,myY));   //左
 
             return list;
     }
